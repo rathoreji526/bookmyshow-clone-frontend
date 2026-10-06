@@ -1,0 +1,25 @@
+.nav{
+    width: 80vw;
+    margin: auto;
+    display: flex;
+    margin: 20px;
+    padding: 10px;
+    justify-content: space-between;
+}
+.navRight{
+    display: flex;
+    gap: 10px;
+}
+.navLink{
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+
+    transition: all 0.2s ease-in-out;
+}
+.navLink:hover{
+    color: #3b82f6;
+    transform: scale(1.1);
+}
