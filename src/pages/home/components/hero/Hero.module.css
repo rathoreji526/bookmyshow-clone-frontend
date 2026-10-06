@@ -1,0 +1,42 @@
+.hero{
+    width: 60vw;
+    padding: 20px 50px;
+    text-align: center;
+    margin-top: 14vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+
+    /* background-color: rgba(240, 248, 255, 0.183); */
+}
+.hero h1{
+    font-size: 2.4rem;
+}
+.heroSearch{
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.heroSearch input{
+    border: 2px solid rgba(128, 128, 128, 0.728);
+    border-radius: 5px;
+    padding: 14px;
+    font-size: 16px;
+    color: white;
+}
+h3{
+    font-weight: 300;
+}
+.heroSearch button{
+    width: 20%;
+    margin:auto;
+    padding: .98rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: white;
+    color: black;
+}

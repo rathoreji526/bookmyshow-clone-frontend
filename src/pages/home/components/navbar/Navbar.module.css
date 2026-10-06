@@ -6,12 +6,15 @@
     padding: 10px;
     justify-content: space-between;
 }
+.nav span{
+    padding: 10px 20px;
+}
 .navRight{
     display: flex;
     gap: 10px;
+    padding: 10px 20px;
 }
-.navLink{
-    display: inline-block;
+.navLink,.redBtn{
     padding: 10px 20px;
     text-decoration: none;
     color: white;
@@ -22,4 +25,14 @@
 .navLink:hover{
     color: #3b82f6;
     transform: scale(1.1);
+}
+
+.redBtn{
+    background-color: red;
+    border-radius: 6px;
+    text-align: center;
+}
+.redBtn:hover{
+    transform: scale(1.05);
+    border-radius: 6px;
 }

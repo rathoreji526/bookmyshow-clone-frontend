@@ -1,0 +1,41 @@
+.container{
+    margin-top: 15%;
+    width: 80%; 
+    padding: 2rem 0rem;
+}
+#header{
+    font-size: 1.5rem;
+}
+.cardContainer{
+    display: flex;
+    margin: 0rem 1rem;
+    padding: 1rem 1.5rem;
+    overflow: scroll;
+    gap: 1.5rem;
+}
+.cardContainer::-webkit-scrollbar{
+    display: none;
+}
+.card{
+    height: 16rem;
+    width: 12rem;
+    background-color: rgba(255, 0, 0, 0.211);
+    position: relative;
+    overflow:visible;
+    flex-shrink: 0;
+    border-radius: 5px;
+}
+.idx{
+    font-size: 5rem;
+    position: absolute;
+    top: 60%;
+    left: -10%;
+    z-index: 1;
+    font-weight: 800;
+    color: black;
+    -webkit-text-stroke: 1px white;
+}
+h4{
+    text-align: right;
+    padding: 5px 10px;
+}
