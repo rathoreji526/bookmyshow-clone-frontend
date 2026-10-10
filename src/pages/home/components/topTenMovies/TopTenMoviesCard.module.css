@@ -4,6 +4,7 @@
     padding: 2rem 0rem;
 }
 #header{
+    font-weight: 700;
     font-size: 1.5rem;
 }
 .cardContainer{
@@ -35,7 +36,30 @@
     color: black;
     -webkit-text-stroke: 1px white;
 }
-h4{
+.card h4{
     text-align: right;
     padding: 5px 10px;
+}
+@media (max-width:768px) {
+    #header{
+        font-size: 1.5rem;
+    }
+    .container{
+        width:90%;
+    }
+    .cardContainer{
+        margin: 0;
+        padding: 1rem 1rem;
+        width: 100%;
+        gap:12px;
+    }
+    .card{
+        height: 12rem;
+        width: 8rem;
+    }
+    .idx{
+        font-size: 4rem;
+        top: 60%;
+        left: -6%;
+    }
 }

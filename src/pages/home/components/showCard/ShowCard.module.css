@@ -1,0 +1,82 @@
+.nowStreaming {
+    width: 80%;
+}
+
+.nowStreaming span {
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    flex-shrink: 0;
+    overflow: scroll;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+.container ::-webkit-scrollbar {
+    display: none;
+}
+
+.dabba {
+    width: 240px;
+    border-radius: 8px;
+    padding: 20px 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-shrink: 0;
+    /* background-color: rgba(255, 255, 255, 0.283); */
+
+}
+
+.imgSection {
+    flex-shrink: 0;
+    height: 360px;
+    width: 100%;
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNZU9PeGKE77YfCNyPBf4D7Xe-u9ccBdMuXtlFbohzFg&s=10');
+    background-size: cover;
+    background-position: center;
+    border: 2px solid white;
+    border-radius: 10px;
+}
+
+.textSection h3,
+h4 {
+    margin: 0;
+    padding: 2px 4px;
+}
+
+.textSection h3 {
+    font-weight: 500;
+}
+
+.textSection h4 {
+    color: rgba(128, 128, 128, 0.659);
+    font-weight: 300;
+}
+
+@media (max-width:768px) {
+    .nowStreaming{
+        width: 90%;
+    }
+    .dabba {
+        width: 160px;
+    }
+
+    .imgSection {
+        height: 220px;
+    }
+    .textSection h3{
+        font-size: 1rem;
+    }
+    .textSection h4{
+        font-size: .8rem;
+    }
+
+    .nowStreaming span {
+        font-size: 1.2rem;
+    }
+}

@@ -1,4 +1,5 @@
 .hero{
+
     width: 60vw;
     padding: 20px 50px;
     text-align: center;
@@ -8,8 +9,6 @@
     align-items: center;
     justify-content: center;
     gap: 50px;
-
-    /* background-color: rgba(240, 248, 255, 0.183); */
 }
 .hero h1{
     font-size: 2.4rem;
@@ -22,6 +21,7 @@
     
 }
 .heroSearch input{
+    width: clamp(250px, 70%, 600px);
     border: 2px solid rgba(128, 128, 128, 0.728);
     border-radius: 5px;
     padding: 14px;
@@ -32,11 +32,36 @@ h3{
     font-weight: 300;
 }
 .heroSearch button{
-    width: 20%;
+    width: clamp(150px, 20%, 250px);
     margin:auto;
     padding: .98rem;
     border-radius: 5px;
     font-size: 1rem;
     background-color: white;
     color: black;
+}
+@media (max-width:768px){
+    .hero{
+        width: 90vw;
+        padding: 20px 0px;
+        gap: 20px;
+    }
+    .heroText h1{
+        font-size: 1.8rem;
+    }
+    .heroText h3{
+        font-size: 1rem;
+    }
+    .heroSearch{
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+    .heroSearch input{
+        font-size: 14px;
+        width: clamp(275px, 70vw, 350px);
+    }
+    .heroSearch button{
+        width: clamp(75px , 40%, 130px);
+        font-size: 14px;
+    }
 }
