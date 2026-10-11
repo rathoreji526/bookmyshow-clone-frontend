@@ -1,4 +1,4 @@
-.nav{
+.nav {
     width: 80vw;
     margin: auto;
     display: flex;
@@ -6,15 +6,22 @@
     padding: 10px;
     justify-content: space-between;
 }
-.nav span{
+
+.nav span {
     padding: 10px 20px;
 }
-.navRight{
+
+.navRight {
     display: flex;
     gap: 10px;
     padding: 10px 20px;
+    align-items: center;
+    justify-content: center;
+    position: relative;
 }
-.navLink,.redBtn{
+
+.navLink,
+.redBtn {
     padding: 10px 20px;
     text-decoration: none;
     color: white;
@@ -22,17 +29,97 @@
 
     transition: all 0.2s ease-in-out;
 }
-.navLink:hover{
+
+.navLink:hover {
     color: #3b82f6;
     transform: scale(1.1);
 }
 
-.redBtn{
+.redBtn {
     background-color: red;
     border-radius: 6px;
     text-align: center;
 }
-.redBtn:hover{
+
+.redBtn:hover {
     transform: scale(1.05);
     border-radius: 6px;
+}
+
+.menu {
+    display: none;
+}
+
+.menuLink {
+    color: white;
+    padding: 5px 10px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.navSlidebar {
+    display: none;
+    width: 40vw;
+}
+
+
+
+
+@media (max-width:768px) {
+    .nav span {
+        font-size: .85rem;
+        width: 30%;
+    }
+
+    .redBtn {
+        padding: 5px 10px;
+        border-radius: 4px;
+    }
+
+    .nav {
+        width: 95vw;
+        margin: 0px;
+        padding: 10px 0px;
+    }
+
+    .navLink {
+        display: none;
+    }
+
+    .navRight {
+        gap: 16px;
+    }
+
+    .menu {
+        display: block;
+    }
+
+    .navSlidebar {
+        position: absolute;
+        width: 40vw;
+        display: flex;
+        align-items: start;
+        padding: 10px 10px;
+        flex-direction: column;
+        text-decoration: none;
+        top: 4%;
+        gap: 10px;
+        background-color: #071f2e;
+        border-radius: 10px;
+
+        transition: all .3s ease-in-out;
+    }
+
+    .active {
+        right: 0%;
+    }
+
+    .active .menu {
+        color: blue;
+    }
+
+    .hide {
+        right: -50%;
+    }
+
 }

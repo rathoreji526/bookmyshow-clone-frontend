@@ -1,5 +1,4 @@
 .hero{
-
     width: 60vw;
     padding: 20px 50px;
     text-align: center;
@@ -44,7 +43,7 @@ h3{
     .hero{
         width: 90vw;
         padding: 20px 0px;
-        gap: 20px;
+        gap: 8px;
     }
     .heroText h1{
         font-size: 1.8rem;
