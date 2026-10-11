@@ -41,9 +41,9 @@ const Signup = () => {
             console.log("Response:", response.data);
 
         } catch (error) {
-            console.log("Status:", error.response?.status);
-            console.log("Backend response:", error.response?.data);
-            console.log("Full error:", error);
+            // console.log("Status:", error.response?.status);
+            // console.log("Backend response:", error.response?.data);
+            // console.log("Full error:", error);
             setresponse(error.response?.status < 500 ? error.response?.data : "Internal server error!");
             setResponseCode(error.response?.status);
         }

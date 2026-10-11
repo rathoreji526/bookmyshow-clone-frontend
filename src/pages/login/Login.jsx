@@ -34,10 +34,9 @@ const Login = () => {
         navigate('/');
       }
     }catch(e){
-      // console.log(e.response);s
-      
-      setResponseCode(e.response.data.status);
-      setResponse(e.response.data.message);
+      const responseCode = e.response?.status;
+      setResponseCode(responseCode);
+      setResponse(responseCode < 500 ? e.response?.data : "Internal server error");
     }
   }
   return (
