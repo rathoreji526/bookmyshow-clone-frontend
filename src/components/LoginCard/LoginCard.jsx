@@ -40,7 +40,7 @@ const LoginCard = ({ fields, header, bottomText, bottomLinkText, bottomLink,onSu
                 <h6>
                     {bottomText}<Link to={bottomLink}>{bottomLinkText}</Link>
                 </h6>
-                <h6 className={Number(responseStatus) < 400 ? styles.success : styles.err}>{typeof(response)=='string' ? response : "Something went wrong!"}</h6>
+                <h6 className={responseStatus < 400 ? styles.success : styles.err}>{responseStatus < 500 ? response : ""}</h6>
             </form>
         </div>
     )

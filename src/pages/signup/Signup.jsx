@@ -5,7 +5,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const baseurl = "http://localhost:2672/";
+const baseurl = "https://bookmyshow-backend-o592.onrender.com/";
 
 const Signup = () => {
     const navigate = useNavigate();
@@ -38,7 +38,7 @@ const Signup = () => {
                 navigate('/login');
             }
 
-            console.log("Response:", response.data);
+            // console.log("Response:", response.data);
 
         } catch (error) {
             // console.log("Status:", error.response?.status);

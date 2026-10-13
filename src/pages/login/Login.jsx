@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 
-const baseurl = "http://localhost:2672/";
+const baseurl = "https://bookmyshow-backend-o592.onrender.com/";
 
 const Login = () => {
 
@@ -26,8 +26,10 @@ const Login = () => {
         baseurl + 'app/login',
         body
       )
+      // console.log(response.data);
+      
     
-      setResponse(response.data.message);
+      setResponse(response?.data?.message);
       setResponseCode(response.status);
       if(response.status===200){
         localStorage.setItem('token',response.data.token);
@@ -36,9 +38,10 @@ const Login = () => {
     }catch(e){
       const responseCode = e.response?.status;
       setResponseCode(responseCode);
-      setResponse(responseCode < 500 ? e.response?.data : "Internal server error");
+      setResponse(responseCode < 500 ? e.response?.data?.message : "Something went wrong!");
     }
   }
+  
   return (
     <div className={styles.body}>
       <nav>
