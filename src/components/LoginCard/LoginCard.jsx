@@ -2,7 +2,7 @@ import { useState } from 'react';
 import styles from './LoginCard.module.css';
 import { Link } from 'react-router-dom';
 
-const LoginCard = ({ fields, header, bottomText, bottomLinkText, bottomLink,onSubmit,response,responseStatus }) => {
+const LoginCard = ({ fields, header, bottomText, bottomLinkText, bottomLink,onSubmit,response,responseStatus,loading}) => {
     const [formValues, setFormValue] = useState({});
 
 
@@ -36,9 +36,9 @@ const LoginCard = ({ fields, header, bottomText, bottomLinkText, bottomLink,onSu
                         />)
                     })
                 }
-                <button>Next</button>
+                <button disabled={loading}>Next</button>
                 <h6>
-                    {bottomText}<Link to={bottomLink}>{bottomLinkText}</Link>
+                    {bottomText}<Link to={bottomLink}>{bottomLinkText} {loading ? styles.disabledLink : ''}</Link>
                 </h6>
                 <h6 className={responseStatus < 400 ? styles.success : styles.err}>{responseStatus < 500 ? response : ""}</h6>
             </form>

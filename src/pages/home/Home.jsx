@@ -10,9 +10,9 @@ const Home = () => {
   return (
     <div className={styles.body}>
         <div className={styles.container}>
-          
-          <Navbar navData = {NavButtonLinks}/>
 
+          <Navbar navData = {NavButtonLinks}/>
+          
           <Hero/>
 
           <TopTenMoviesCard/>

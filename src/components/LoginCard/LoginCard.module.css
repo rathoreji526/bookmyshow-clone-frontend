@@ -60,6 +60,11 @@ button:active{
 .success{
     color:green;
 }
+.disabledLink{
+    pointer-events: none;
+    opacity: .5;
+    cursor: not-allowed;
+}
 @media(max-width:768px){
     h1{
         font-size: 24px;

@@ -2,19 +2,32 @@ import LoginCard from "../../components/LoginCard/LoginCard";
 import styles from "./Signup.module.css"
 import { signupFields } from '../../configs/formConfig'
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Loader from "../../components/loader/Loader";
 
 const baseurl = "https://bookmyshow-backend-o592.onrender.com/";
 
 const Signup = () => {
     const navigate = useNavigate();
-    const [response, setresponse] = useState("");
-    const [responseCode,setResponseCode] = useState();
+    const [response, setResponse] = useState("");
+    const [responseCode, setResponseCode] = useState();
+    const [loading, setLoading] = useState(false);
+
+    useEffect(() => {
+        if (!response) return; 
+        
+        const timer = setTimeout(() => {
+            setResponse(""); 
+
+        }, 5000);
+
+        return () => clearTimeout(timer);
+    }, [response]);
 
 
     const handleSignup = async (data) => {
-        
+
         const body = {
             fullName: data.fullName,
             username: data.username,
@@ -22,6 +35,7 @@ const Signup = () => {
             password: data.password,
             confirmPassword: data.confirmPassword
         }
+        setLoading(true);
         try {
             // console.log("Sending:", data);
 
@@ -31,10 +45,10 @@ const Signup = () => {
             );
             // console.log(response.data);
             setResponseCode(response.status);
-            setresponse(response.data);
+            setResponse(response.data);
             // console.log(response.status);
-            
-            if(response.status==201){
+
+            if (response.status == 201) {
                 navigate('/login');
             }
 
@@ -44,14 +58,19 @@ const Signup = () => {
             // console.log("Status:", error.response?.status);
             // console.log("Backend response:", error.response?.data);
             // console.log("Full error:", error);
-            setresponse(error.response?.status < 500 ? error.response?.data : "Internal server error!");
+            setResponse(error.response?.status < 500 ? error.response?.data : "Internal server error!");
             setResponseCode(error.response?.status);
+        } finally {
+            setLoading(false);
         }
-        
+
     }
 
     return (
         <div className={styles.body}>
+            {
+                loading && <Loader />
+            }
             <nav>
                 <h1>BookMyShow Clone</h1>
             </nav>
@@ -64,6 +83,7 @@ const Signup = () => {
                 onSubmit={handleSignup}
                 response={response}
                 responseStatus={responseCode}
+                loading={loading}
             />
         </div>
     )
