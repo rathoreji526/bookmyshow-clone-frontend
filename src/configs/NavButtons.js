@@ -1,6 +1,14 @@
-export const NavButtonLinks = [
-    {name:'Home', link : '/'},
-    {name:'Bookings', link:'/bookings'},
-    {name:'Profile',link:'/profile'},
+
+export const newUser = [
     {name:'Login',link:'/login'}
+]
+export const userOptions = [
+    {name:'Bookings', link:'/bookings'},
+    {name:'Become a Partner', link:'/become-partner'},
+    {name:'Logout'}
+]
+export const adminOptions = [
+    {name:'Bookings', link:'/bookings'},
+    {name:'Manage Theater',link:'/manage-theater'},
+    {name:'Logout'}
 ]

@@ -7,37 +7,43 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 50px;
+    gap: 2rem;
 }
-.hero h1{
-    font-size: 2.4rem;
+.heroText h1{
+    font-size: clamp(1.5rem, 2.7vw, 3rem);
 }
 .heroSearch{
     width: 80%;
     display: flex;
     align-items: center;
     justify-content: center;
-    
+    gap: 10px;
 }
 .heroSearch input{
-    width: clamp(250px, 70%, 600px);
+    width: clamp(250px, 80%, 700px);
     border: 2px solid rgba(128, 128, 128, 0.728);
     border-radius: 5px;
     padding: 14px;
     font-size: 16px;
-    color: white;
+    color: black;
+    background-color: transparent;
 }
-h3{
+.heroSearch input:focus{
+    outline: none;
+}
+.heroText h3{
+    font-size: (.5rem, .8vw, 2rem);
     font-weight: 300;
 }
 .heroSearch button{
-    width: clamp(150px, 20%, 250px);
+    width: clamp(150px, 25%, 300px);
     margin:auto;
     padding: .98rem;
     border-radius: 5px;
     font-size: 1rem;
     background-color: white;
     color: black;
+    border: none;
 }
 @media (max-width:768px){
     .hero{
@@ -55,6 +61,7 @@ h3{
         width: 100%;
         flex-wrap: wrap;
         flex-direction: column;
+        gap: 5px;
     }
     .heroSearch input{
         font-size: 14px;

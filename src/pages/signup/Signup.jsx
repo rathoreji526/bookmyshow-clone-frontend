@@ -5,6 +5,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Loader from "../../components/loader/Loader";
+import { jwtDecode } from "jwt-decode";
 
 const baseurl = "https://bookmyshow-backend-o592.onrender.com/";
 
@@ -13,6 +14,10 @@ const Signup = () => {
     const [response, setResponse] = useState("");
     const [responseCode, setResponseCode] = useState();
     const [loading, setLoading] = useState(false);
+
+    const token = localStorage.getItem('token');
+    const decodeToken = jwtDecode(token);
+    console.log(decodeToken.role);
 
     useEffect(() => {
         if (!response) return; 

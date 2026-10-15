@@ -10,17 +10,7 @@
     border-radius: 10px;
 }
 
-/* form{
-    width: 90%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    /* background-color: red; */
-/* } */
-
-input{
+.form input{
     width: 80%;
     padding: 0px 10px;
     margin: 10px 10px;
@@ -29,11 +19,11 @@ input{
     background-color: transparent;
     border-bottom: 2px solid gray;
 }
-input:focus{
+.form input:focus{
     outline: none;
 }
 
-button{
+.form button{
     margin-top: 10px;
     padding: 15px 20px;
     width: 85%;
@@ -42,7 +32,7 @@ button{
     color: white;
     border:none;
 }
-button:active{
+.form button:active{
     scale: .99;
     background-color: grey;
 }

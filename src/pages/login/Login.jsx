@@ -38,8 +38,6 @@ const Login = () => {
         baseurl + 'app/login',
         body
       )
-      // console.log(response.data);
-
 
       setResponse(response?.data?.message);
       setResponseCode(response.status);
