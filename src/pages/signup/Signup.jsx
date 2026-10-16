@@ -15,15 +15,17 @@ const Signup = () => {
     const [responseCode, setResponseCode] = useState();
     const [loading, setLoading] = useState(false);
 
-    const token = localStorage.getItem('token');
-    const decodeToken = jwtDecode(token);
-    console.log(decodeToken.role);
+    // const token = localStorage.getItem('token');
+    // if (token) {
+    //     const decodeToken = jwtDecode(token);
+    //     console.log(decodeToken.role);
 
+    // }
     useEffect(() => {
-        if (!response) return; 
-        
+        if (!response) return;
+
         const timer = setTimeout(() => {
-            setResponse(""); 
+            setResponse("");
 
         }, 5000);
 
