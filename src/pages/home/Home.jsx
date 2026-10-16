@@ -14,14 +14,14 @@ const Home = () => {
   useEffect(() => {
     const getUserRole = () => {
       const token = localStorage.getItem('token');
+      
       if (token) {
         try {
           const decoded = jwtDecode(token);
-
           if (decoded?.role == 'USER') {
             setNavButtons(userOptions);
             
-          } else if (decoded?.role == 'ADMIN') {
+          } else if (decoded?.role == 'OWNER') {
             setNavButtons(adminOptions);
           }
         } catch (error) {

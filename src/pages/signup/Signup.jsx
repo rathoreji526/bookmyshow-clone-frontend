@@ -5,7 +5,6 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Loader from "../../components/loader/Loader";
-import { jwtDecode } from "jwt-decode";
 
 const baseurl = "https://bookmyshow-backend-o592.onrender.com/";
 
@@ -15,12 +14,7 @@ const Signup = () => {
     const [responseCode, setResponseCode] = useState();
     const [loading, setLoading] = useState(false);
 
-    // const token = localStorage.getItem('token');
-    // if (token) {
-    //     const decodeToken = jwtDecode(token);
-    //     console.log(decodeToken.role);
 
-    // }
     useEffect(() => {
         if (!response) return;
 
@@ -44,27 +38,20 @@ const Signup = () => {
         }
         setLoading(true);
         try {
-            // console.log("Sending:", data);
 
             const response = await axios.post(
                 baseurl + 'apis/user/register-user',
                 body
             );
-            // console.log(response.data);
             setResponseCode(response.status);
             setResponse(response.data);
-            // console.log(response.status);
 
             if (response.status == 201) {
                 navigate('/login');
             }
 
-            // console.log("Response:", response.data);
 
         } catch (error) {
-            // console.log("Status:", error.response?.status);
-            // console.log("Backend response:", error.response?.data);
-            // console.log("Full error:", error);
             setResponse(error.response?.status < 500 ? error.response?.data : "Internal server error!");
             setResponseCode(error.response?.status);
         } finally {

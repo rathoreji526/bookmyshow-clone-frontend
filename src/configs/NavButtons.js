@@ -10,5 +10,6 @@ export const userOptions = [
 export const adminOptions = [
     {name:'Bookings', link:'/bookings'},
     {name:'Manage Theater',link:'/manage-theater'},
+    {name:'Add Theater', link:'/become-partner'},
     {name:'Logout'}
 ]
