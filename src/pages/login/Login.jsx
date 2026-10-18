@@ -9,7 +9,7 @@ import Loader from "../../components/loader/Loader";
 
 const baseurl = "https://bookmyshow-backend-o592.onrender.com/";
 
-const Login = () => {
+const Login = ({onSuccessfulLogin}) => {
 
   const [response, setResponse] = useState("");
   const [responseCode, setResponseCode] = useState();
@@ -42,7 +42,9 @@ const Login = () => {
       setResponse(response?.data?.message);
       setResponseCode(response.status);
       if (response.status === 200) {
-        localStorage.setItem('token', response.data.token);
+        const token = response.data.token;
+        localStorage.setItem('token', token);
+        onSuccessfulLogin(token);
         navigate('/');
       }
     } catch (e) {

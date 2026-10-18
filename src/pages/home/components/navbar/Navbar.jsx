@@ -3,20 +3,17 @@ import styles from './Navbar.module.css'
 import { Menu } from 'lucide-react'
 import { useState } from "react"
 
-const Navbar = ({ navData }) => {
+const Navbar = ({ navData, performLogout }) => {
     const [menuOpen, setMenuOpen] = useState(false);
     const navigate = useNavigate();
 
     const handleMenu = () => {
         setMenuOpen(!menuOpen);
     }
-    const performlogout = () => {
-        localStorage.removeItem('token');
-        window.location.reload();
-    }
+    
     const handleButtonClick = (item) => {
         if(item.name==='Logout'){
-            performlogout();
+            performLogout();
             console.log("Logging out");
             
         }else if(item.link){

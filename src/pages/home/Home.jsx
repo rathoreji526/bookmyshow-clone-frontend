@@ -5,39 +5,28 @@ import Hero from './components/hero/Hero'
 import TopTenMoviesCard from './components/topTenMovies/TopTenMoviesCard'
 import ShowCard from './components/showCard/ShowCard'
 import ExploreByCity from './components/exploreByCity/ExploreByCity'
-import { jwtDecode } from 'jwt-decode'
 import { useEffect, useState } from 'react'
+import Loader from '../../components/loader/Loader'
 
-const Home = () => {
-  const [navButtons, setNavButtons] = useState([]);
 
+const Home = ({ performLogout, Authenticated, userRole, loading }) => {
+  const [navButtons, setnavButtons] = useState([]);
+  
   useEffect(() => {
-    const getUserRole = () => {
-      const token = localStorage.getItem('token');
-      
-      if (token) {
-        try {
-          const decoded = jwtDecode(token);
-          if (decoded?.role == 'USER') {
-            setNavButtons(userOptions);
-            
-          } else if (decoded?.role == 'OWNER') {
-            setNavButtons(adminOptions);
-          }
-        } catch (error) {
-          console.log("invalid token");
-        }
-      } else {
-        setNavButtons(newUser);
-      }
-    }
-    getUserRole();
-  }, [])
+    if (userRole === 'OWNER') setnavButtons(adminOptions);
+    else if (userRole === 'USER') setnavButtons(userOptions);
+    else setnavButtons(newUser);
+  }, [userRole])
+
+
+  if(loading){
+    return (<Loader/>)
+  }
   return (
     <div className={styles.body}>
       <div className={styles.container}>
 
-        <Navbar navData={(navButtons && (navButtons.length != 0)) ? navButtons : newUser} />
+        <Navbar navData={(navButtons && (navButtons.length != 0)) ? navButtons : newUser} performLogout={performLogout} />
 
         <Hero />
 
