@@ -1,14 +1,16 @@
 .container{
+    background-color: rgb(22, 39, 69);
     height: 100vh;
     width: 100vw;
-    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
 
-    position: absolute;
+    position: fixed;
+    top: 0;
+    left: 0;
     z-index: 10;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(20px);
 }
 .loader{
     height: 75px;

@@ -3,13 +3,36 @@
     width: 100vw;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     flex-direction: column;
-    gap: 10px;
+    padding: 5% 5%;
 }
 .manageTheater_main button{
     padding: 10px 20px;
     border-radius: 5px;
     border: none;
-    background-color: cornflowerblue;
+    background-color: white;
+}
+.theaterContainer{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 16px;
+    
+    align-items: center;
+    padding: 10px 20px;
+}
+.theater{
+    border: 2px solid white;
+    border-radius: 5px;
+    text-align: left;
+    padding: 10px 20px;
+    background-color: rgb(57, 178, 205);
+
+    transition:all 0.1s ease-in-out;
+}
+.theater:hover{
+    scale:1.02;
+    background-color: rgb(57, 178, 173);
+    /* color: white; */
 }

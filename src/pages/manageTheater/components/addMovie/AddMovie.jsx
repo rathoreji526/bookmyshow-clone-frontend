@@ -4,13 +4,20 @@ import { addMovieProperties } from './config/AddMovieConfig';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Loader from '../../../../components/loader/Loader';
+import Notification from '../../../../components/notification/Notification';
 
 const baseURL = 'https://bookmyshow-backend-o592.onrender.com/';
 
 const AddMovie = () => {
     const [formData, setFormData] = useState([]);
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(false);
+    const [receivedResponse, setreceivedResponse] = useState(true);
+    const [notificationMsg, setNotificationMsg] = useState('');
+    const [notificationType, setNotificationType] = useState('');
+    const [keyCount, setKeyCount] = useState(0);
+
     const token = localStorage.getItem('token');
+
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -37,17 +44,20 @@ const AddMovie = () => {
                 body,
                 {
                     headers: {
-                        Authorization:  `Bearer ${token}`
+                        Authorization: `Bearer ${token}`
                     }
                 }
             )
-            console.log(response.data);
+            setNotificationMsg(response.data);
+            setNotificationType("Success");
 
         } catch (error) {
-            console.log(error);
-
-        }finally{
+            setNotificationMsg(error.message);
+            setNotificationType("Error");
+        } finally {
             setLoading(false);
+            setreceivedResponse(true);
+            setKeyCount((key)=>key+1);
         }
     }
     const handleChange = (event) => {
@@ -60,7 +70,14 @@ const AddMovie = () => {
     return (
         <div className={style.addMovie_main}>
             {
-                loading && <Loader/>
+                loading && <Loader />
+            }
+            {
+                receivedResponse && <Notification
+                key={keyCount}
+                message={notificationMsg}
+                type={notificationType}
+                />
             }
             <div className={style.mainContainer}>
                 <h1>Enter Movie Details</h1>

@@ -1,0 +1,28 @@
+.notification_main {
+    position: fixed;
+    left: 30%;
+    width: 40vw;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 10px;
+    font-size: 1.2rem;
+    transition: top 0.4s ease-in-out;
+}
+
+.hide {
+    top: -50%;
+}
+
+.show {
+    top: 20px;
+}
+
+.error {
+    background-color: rgb(222, 97, 86);
+}
+
+.success {
+    background-color: rgb(151, 236, 151);
+}
