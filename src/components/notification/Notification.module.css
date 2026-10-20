@@ -26,3 +26,9 @@
 .success {
     background-color: rgb(151, 236, 151);
 }
+@media (max-width:768px) {
+    .notification_main{
+        width: 90vw;
+        left: 5%;
+    }
+}

@@ -16,7 +16,7 @@ const BecomePartner = () => {
       const decoded = jwtDecode(token);
       if (decoded?.role === 'USER' || decoded?.role === 'OWNER') {
         navigate('/become-partner');
-      }else{
+      } else {
         navigate('/')
       }
     } else {
@@ -34,16 +34,18 @@ const BecomePartner = () => {
       {!hasSubmitted ? (
         <div className={style.tncContainer}>
           <h1>Terms and Conditions to Become a Partner</h1>
-          <TermsNConditions/>
+          <TermsNConditions />
 
           <hr></hr>
           <div className={style.formBottom}>
             <label>
-              <input type="checkbox"
-                checked={agreed}
-                onChange={(e) => setAgreed(e.target.checked)}
-              />
-              <span>By checking the box "I agree to the Theater Partner Terms and Conditions," you acknowledge that you have read, understood, and accepted all the terms outlined above.</span>
+              <span>
+                <input type="checkbox"
+                  checked={agreed}
+                  onChange={(e) => setAgreed(e.target.checked)}
+                />
+              </span>
+              <span><p>By checking the box "I agree to the Theater Partner Terms and Conditions," you acknowledge that you have read, understood, and accepted all the terms outlined above.</p></span>
             </label>
 
             <button
