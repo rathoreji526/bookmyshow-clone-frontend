@@ -9,6 +9,9 @@ import "./App.css"
 import { useEffect, useState } from 'react'
 import { jwtDecode } from 'jwt-decode'
 import AddMovie from './pages/manageTheater/components/addMovie/AddMovie'
+import AddScreen from './pages/manageTheater/components/addScreen/AddScreen'
+import PreviewScreen from './pages/manageTheater/components/addScreen/screenPreview/PreviewScreen'
+import ManageMenu from './pages/manageTheater/manageMenu/ManageMenu'
 
 
 const App = () => {
@@ -79,6 +82,9 @@ const App = () => {
           <Route path='/become-partner' element={<BecomePartner />} />
           <Route path='/manage-theater' element={<ManageTheater />} />
           <Route path='/manage-theater/add-movie' element={<AddMovie/>}/>
+          <Route path='/add-screen' element={<AddScreen/>}/>
+          <Route path='preview-screen' element = {<PreviewScreen/>}/>
+          <Route path='manage-menu' element={<ManageMenu/>}/>
         </Routes>
       </div>
     </Router>

@@ -1,12 +1,18 @@
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  overflow-x: hidden;
-}
+@import "tailwindcss";
 
-html, body, #root{
-  height: 100%;
-  width:100%;
-  background-color: black;
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+    width: 100%;
+    background-color: black;
+  }
 }
