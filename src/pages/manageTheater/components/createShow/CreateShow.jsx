@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom"
-import { createShow } from "../../config/CreateShowconfig";
+import { createShow } from "../../config/CreateShowConfig";
 import { useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
 import Loader from "../../../../components/loader/Loader";
