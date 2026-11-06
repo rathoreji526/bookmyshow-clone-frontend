@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom"
-import { manageMenu } from "../config/ManageMenuconfig"
+import { manageMenu } from "../../config/ManageMenuconfig"
 
 const ManageMenu = () => {
     const location = useLocation();

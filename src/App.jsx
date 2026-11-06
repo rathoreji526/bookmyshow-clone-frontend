@@ -11,7 +11,10 @@ import { jwtDecode } from 'jwt-decode'
 import AddMovie from './pages/manageTheater/components/addMovie/AddMovie'
 import AddScreen from './pages/manageTheater/components/addScreen/AddScreen'
 import PreviewScreen from './pages/manageTheater/components/addScreen/screenPreview/PreviewScreen'
-import ManageMenu from './pages/manageTheater/manageMenu/ManageMenu'
+import ManageMenu from './pages/manageTheater/components/manageMenu/ManageMenu'
+import AllScreens from './pages/manageTheater/components/createShow/components/AllScreens'
+import CreateShow from './pages/manageTheater/components/createShow/CreateShow'
+import AllMovies from './pages/manageTheater/components/createShow/components/AllMovies'
 
 
 const App = () => {
@@ -85,6 +88,9 @@ const App = () => {
           <Route path='/add-screen' element={<AddScreen/>}/>
           <Route path='preview-screen' element = {<PreviewScreen/>}/>
           <Route path='manage-menu' element={<ManageMenu/>}/>
+          <Route path='all-screens' element={<AllScreens/>}/>
+          <Route path='create-show' element={<CreateShow/>}/>
+          <Route path='all-movies' element={<AllMovies/>}/>
         </Routes>
       </div>
     </Router>

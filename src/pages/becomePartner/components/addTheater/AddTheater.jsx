@@ -5,12 +5,15 @@ import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
 import Loader from './../../../../components/loader/Loader';
 import { useNavigate } from 'react-router-dom';
+import Notification from '../../../../components/notification/Notification';
 
 const baseURL = 'https://bookmyshow-backend-o592.onrender.com/';
 
 const AddTheater = () => {
   const [formValue, setFormValue] = useState([]);
   const [loading, setloading] = useState(false);
+  const [response, setResponse] = useState();
+  const [responseStatus, setResponseStatus] = useState();
 
   const navigate = useNavigate();
 
@@ -54,28 +57,40 @@ const AddTheater = () => {
           }
         }
       )
-      console.log(response?.data);
 
       const decoded = jwtDecode(token);
+
       if (decoded?.role !== 'OWNER') {
+        setResponse(response.data + ' logging you out! Re-login for the admin pannel.');
         localStorage.removeItem('token');
-        window.location.reload();
-      }else{
-        navigate('/');
+      } else {
+        setResponse(response.data + ' Navigating to home page...');
       }
+      setTimeout(() => {
+        navigate('/');
+      }, 5000)
+
+      setResponseStatus(response.status);
+      sessionStorage.removeItem('savedTheaters');
 
     } catch (error) {
-      console.log(error);
-
-    }finally{
+      setResponse(error.response?.data);
+      setResponseStatus(error.status);
+    } finally {
       setloading(false);
     }
 
   }
   return (
     <div className={style.main_addTheater}>
-      { loading &&
-        <Loader/>
+      {loading &&
+        <Loader />
+      }
+      {
+        <Notification
+          message={response}
+          type={responseStatus < 400 ? 'Success' : 'Error'}
+        />
       }
       <div className={style.form_container}>
         <form onSubmit={(event) => { handleFormSubmit(event) }} className={style.addTheaterForm}>

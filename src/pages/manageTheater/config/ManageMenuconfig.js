@@ -1,4 +1,4 @@
 export const manageMenu = [
     {name:'Add Screen', navigate:'/add-screen'},
-    {name:'Create Show', navigate:'/create-show'}
+    {name:'Create Show', navigate:'/all-screens'}
 ]

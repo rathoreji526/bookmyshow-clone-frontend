@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { addMovieProperties } from './config/AddMovieConfig';
+import { addMovieProperties } from './../../config/AddMovieConfig';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Loader from '../../../../components/loader/Loader';

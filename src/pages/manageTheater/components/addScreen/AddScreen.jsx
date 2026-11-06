@@ -1,5 +1,5 @@
 import { useNavigate, useLocation } from "react-router-dom"
-import { addScreen } from "./addScreenConfig/AddScreenConfig";
+import { addScreen } from "../../config/AddScreenConfig";
 import { useEffect, useState } from "react";
 
 const baseURL = 'https://bookmyshow-backend-o592.onrender.com/'

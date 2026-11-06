@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom"
+import { data, useNavigate } from "react-router-dom"
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -8,9 +8,12 @@ const baseURL = "https://bookmyshow-backend-o592.onrender.com/";
 
 const ManageTheater = () => {
   const navigate = useNavigate();
-  const [theaters, setTheaters] = useState([]);
-  const [loading, setloading] = useState(false)
+  const [theaters, setTheaters] = useState(()=>{
+    const data = sessionStorage.getItem('savedTheaters');
+    return data ? JSON.parse(data) : null;
+  });
 
+  const [loading, setloading] = useState(false)
   const token = localStorage.getItem('token');
 
   const handleTheaterClick = (theaterId) => {
@@ -39,6 +42,9 @@ const ManageTheater = () => {
   }
 
   useEffect(() => {
+    if(theaters!=null){
+      return;
+    }
     const fetchAllTheaters = async () => {
       setloading(true)
       try {
@@ -49,9 +55,8 @@ const ManageTheater = () => {
             }
           }
         )
-        // console.log(response.data.location);
-
         setTheaters(response.data);
+        sessionStorage.setItem('savedTheaters', JSON.stringify(response.data));
       } catch (error) {
         console.log(error);
       } finally {
