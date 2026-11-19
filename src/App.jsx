@@ -15,6 +15,9 @@ import ManageMenu from './pages/manageTheater/components/manageMenu/ManageMenu'
 import AllScreens from './pages/manageTheater/components/createShow/components/AllScreens'
 import CreateShow from './pages/manageTheater/components/createShow/CreateShow'
 import AllMovies from './pages/manageTheater/components/createShow/components/AllMovies'
+import Show from './booking-flow/shows/Show'
+import Payment from './booking-flow/payment/Payment'
+import ShowSeats from './booking-flow/showSeats/ShowSeats'
 
 
 const App = () => {
@@ -77,7 +80,7 @@ const App = () => {
             performLogout={handleLogout}
             Authenticated={Authenticated}
             userRole={Role}
-            loading={loading}
+            // loading={loading}
             />}
             
           />
@@ -91,6 +94,10 @@ const App = () => {
           <Route path='all-screens' element={<AllScreens/>}/>
           <Route path='create-show' element={<CreateShow/>}/>
           <Route path='all-movies' element={<AllMovies/>}/>
+          <Route path='movie/shows' element={<Show/>}/>
+          <Route path='movie/show/show-seats' element={<ShowSeats/>}/>
+          <Route path='movie/show/show-seats/payment' element={<Payment/>}/>
+
         </Routes>
       </div>
     </Router>

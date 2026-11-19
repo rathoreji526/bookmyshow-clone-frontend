@@ -66,6 +66,8 @@ const ManageTheater = () => {
 
     fetchAllTheaters();
   }, [])
+  // console.log(theaters);
+  
 
 
   const addMovie = () => {
@@ -92,7 +94,7 @@ const ManageTheater = () => {
               >{data.name}</h4>
               <h6
               className="text-xs font-medium text-slate-400 tracking-wider uppercase"
-              >{data.panNumber}</h6>
+              >{data.state} {data.city} {data.zipcode}</h6>
             </div>
           })
         }

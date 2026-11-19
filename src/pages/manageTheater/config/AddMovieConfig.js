@@ -4,5 +4,6 @@ export const addMovieProperties = [
     { name: 'language', label: 'Language', type: 'text', placeholder: 'Enter language', required: true },
     { name: 'releaseDate', label: 'Release Date', type: 'datetime-local', placeholder: '', required: true },
     { name: 'posterUrl', label: 'Poster URL', type: 'text', placeholder: 'Paste poster URL here', required: true },
-    { name: 'rating', label: 'Rating', type: 'number', step: 'any',min:0,max:10, placeholder: 'Enter rating (e.g. 4.5)', required: true }
+    { name: 'rating', label: 'Rating', type: 'number', step: 'any',min:0,max:10, placeholder: 'Enter rating (e.g. 4.5)', required: true },
+    {name: 'description', label: 'Description', type:'text', placeholder:'ACTION/HORROR etc', required:true}
 ];

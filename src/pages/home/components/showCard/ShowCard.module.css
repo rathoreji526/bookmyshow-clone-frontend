@@ -36,7 +36,7 @@
     flex-shrink: 0;
     height: 360px;
     width: 100%;
-    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNZU9PeGKE77YfCNyPBf4D7Xe-u9ccBdMuXtlFbohzFg&s=10');
+    /* background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNZU9PeGKE77YfCNyPBf4D7Xe-u9ccBdMuXtlFbohzFg&s=10'); */
     background-size: cover;
     background-position: center;
     border: 2px solid white;

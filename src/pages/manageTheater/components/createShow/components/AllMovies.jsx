@@ -31,6 +31,7 @@ const AllMovies = () => {
                     baseURL + '/apis/movies/getAllMovies'
                 )
                 localStorage.setItem('movies', JSON.stringify(response.data));
+                setMovies(response.data);
                 setResponse(response.data);
                 setResponseStatus(response.status);
             }catch(e){
@@ -76,6 +77,7 @@ const AllMovies = () => {
                         }}
                         >
                             <h4 className="text-lg font-bold text-amber-400 tracking-wide">{data.name}</h4>
+                            
                         </div>
                     })
                 }
