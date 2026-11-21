@@ -46,9 +46,9 @@ const TopTenMoviesCard = () => {
                 }
                 {
                     Array.isArray(response) && response.map((data, idx) => {
-                        return <div className={styles.card}>
+                        return <div className={`${styles.card} p-1 bg-red-400`}>
                             <h4>⭐️ {data.rating}</h4>
-                            <span className={styles.idx}>{idx}</span>
+                            <span className={styles.idx}>{idx+1}</span>
                         </div>
                     })
                 }

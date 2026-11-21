@@ -2,15 +2,18 @@ import axios from 'axios';
 import React, { useEffect, useMemo, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Loader from '../../components/loader/Loader';
+import Notification from '../../components/notification/Notification';
+import { isAuthenticated } from '../../utils/Auth';
+import NavigateToLoginPage from '../../utils/NavigateToLoginPage';
 
 const baseURL = "https://bookmyshow-backend-o592.onrender.com";
 
 const ShowSeats = () => {
+  const token = localStorage.getItem('token');
   const location = useLocation();
   const navigate = useNavigate();
   const showId = location.state?.showId;
-  console.log('showId: '+showId);
-  
+  // console.log('showId: ' + showId);
 
   const [loading, setLoading] = useState(false);
   const [response, setResponse] = useState(() => {
@@ -18,16 +21,14 @@ const ShowSeats = () => {
     return data ? JSON.parse(data) : null;
   });
   const [responseStatus, setResponseStatus] = useState();
-
   const [selectedSeatIds, setSelectedSeatIds] = useState([]);
+  const [showLoginRedirect, setShowLoginRedirect] = useState(false);
+  const [loginRedirectMessage, setLoginRedirectMessage] = useState();
 
   useEffect(() => {
     if (!showId || response) {
       return;
     }
-
-
-
     const getShowSeats = async () => {
       setLoading(true);
       try {
@@ -112,27 +113,73 @@ const ShowSeats = () => {
   );
 
   // Next step (seat lock / booking page)
-  const handleProceed = () => {
+  const [initiatePaymentResponse, setInitiatePaymentResponse] = useState();
+  const [initiatePaymentResponseStatus, setInitiatePaymentResponseStatus] = useState();
+  const [showErrorNotification, setShowErrorNotification] = useState(false);
+  const handleProceed = async () => {
     if (!selectedSeatIds.length) return;
+    // Authenticate
+    if (!isAuthenticated()) {
+      setLoginRedirectMessage('Please login to continue, Redirecting to login page...');
+      setShowLoginRedirect(true);
+      return;
+    }
 
-    // Agar yahin lock API call karni ho to:
-    // await axios.post(`${baseURL}/apis/seat/lock`, { showId, seatIds: selectedSeatIds });
+    const body = {
+      'showSeatIds': selectedSeatIds,
+      showId
+    }
+    setLoading(true);
+    try {
+      const response = await axios.post(
+        baseURL + '/apis/booking/initiate-payment',
+        body, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      setInitiatePaymentResponse(response.data);
+      setInitiatePaymentResponseStatus(response.status);
+      // console.log(response);
 
-    // navigate('/checkout', {
-    //   state: {
-    //     showId,
-    //     selectedSeatIds,
-    //     selectedSeats,
-    //     totalAmount,
-    //   },
-    // });
-    console.log(selectedSeatIds);
-    
+      navigate('/movie/show/show-seats/payment', {
+        state: {
+          'transactionId': response.data.txnId
+        }
+      })
+    } catch (e) {
+      if (e.status < 500) {//user side issue
+        // console.log(e.response.data);
+
+        setInitiatePaymentResponse(e.status == 403 ? 'Unauthorised!' : e.response?.data);
+        setInitiatePaymentResponseStatus(e.status);
+      } else {//server side issue
+        setInitiatePaymentResponse('Internal Server Error!');
+        setInitiatePaymentResponseStatus(e.status);
+      }
+      setShowErrorNotification(true);
+      // console.log(initiatePaymentResponse);
+
+    } finally {
+      setLoading(false);
+      const timeout = setTimeout(() => {
+        setShowErrorNotification(false);
+      }, 5000);
+      return () => clearTimeout(timeout);
+    }
   };
 
   return (
     <div className="min-h-screen w-full bg-slate-950 px-4 py-8 pb-32 text-slate-100 flex flex-col items-center">
+      {showLoginRedirect && <NavigateToLoginPage message={loginRedirectMessage} />}
       {loading && <Loader />}
+
+      {showErrorNotification &&
+        <Notification
+          message={initiatePaymentResponse}
+          type={'Error'}
+          key={Date.now()}
+        />}
 
       {!loading && (!showId || groupedRows.length === 0) && (
         <div className="w-full max-w-4xl rounded-2xl border border-slate-800 bg-slate-900/70 p-10 text-center">

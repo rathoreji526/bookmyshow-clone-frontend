@@ -32,7 +32,7 @@ const Show = () => {
       return;
     }
     const getShows = async () => {
-      console.log(movieId);
+      // console.log(movieId);
       setLoading(true);
       try {
         const response = await axios.get(

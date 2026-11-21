@@ -13,6 +13,8 @@ const baseURL = "https://bookmyshow-backend-o592.onrender.com";
 
 const Home = ({ performLogout, Authenticated, userRole }) => {
   const token = localStorage.getItem('token');
+  // console.log('token is: '+token);
+  
   const [loading, setLoading] = useState(false);
   const [navButtons, setnavButtons] = useState([]);
   const [nowShowingResponse, setnowShowingResponse] = useState(() => {
@@ -39,7 +41,7 @@ const Home = ({ performLogout, Authenticated, userRole }) => {
         const response = await axios.get(
           baseURL + '/apis/show/now-showing-movies'
         )
-        console.log(response.data);
+        // console.log(response.data);
         sessionStorage.setItem('now-showing-movies', JSON.stringify(response.data));
         setnowShowingResponse(response.data);
         setNowShowingResponseStatus(response.status);

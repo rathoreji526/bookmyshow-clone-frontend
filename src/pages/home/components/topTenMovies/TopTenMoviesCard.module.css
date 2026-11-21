@@ -13,6 +13,7 @@
     padding: 1rem 1.5rem;
     overflow: scroll;
     gap: 1.5rem;
+    padding: 24px;
 }
 .cardContainer::-webkit-scrollbar{
     display: none;
@@ -49,7 +50,7 @@
     }
     .cardContainer{
         margin: 0;
-        padding: 1rem 1rem;
+        /* padding: 1rem 1rem; */
         width: 100%;
         gap:12px;
     }

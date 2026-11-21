@@ -38,7 +38,7 @@ const LoginCard = ({ fields, header, bottomText, bottomLinkText, bottomLink,onSu
                 }
                 <button disabled={loading}>Next</button>
                 <h6>
-                    {bottomText}<Link to={bottomLink}>{bottomLinkText} {loading ? styles.disabledLink : ''}</Link>
+                    {bottomText}<Link className='underline text-blue-800' to={bottomLink}>{bottomLinkText} {loading ? styles.disabledLink : ''}</Link>
                 </h6>
                 <h6 className={responseStatus < 400 ? styles.success : styles.err}>{responseStatus < 500 ? response : ""}</h6>
             </form>
