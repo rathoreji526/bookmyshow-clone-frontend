@@ -68,7 +68,7 @@ const AllScreens = () => {
             }
             <div className="flex flex-col gap-4 w-full max-w-md bg-slate-800/60 p-8 rounded-2xl border border-slate-700/50 shadow-xl backdrop-blur-sm">
                 {
-                    screens && screens.map((data, idx) => {
+                    Array.isArray(screens) && screens.map((data, idx) => {
                         return <div
                             className="group relative flex items-center justify-between p-4 duration-300 ease-in-out bg-gradient-to-r from-amber-600 to-amber-700 hover:scale-[1.02] hover:from-amber-500 hover:to-amber-600 shadow-lg hover:shadow-amber-600/30 text-white font-semibold rounded-xl border border-amber-500/30 cursor-pointer overflow-hidden"
                             key={idx}
@@ -84,6 +84,9 @@ const AllScreens = () => {
                             {data.name}
                         </div>
                     })
+                }
+                {
+                    !Array.isArray(screens) && <div className="text-white text-center text-2xl">No Screen found!</div>
                 }
             </div>
         </div>
